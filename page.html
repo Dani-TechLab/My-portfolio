@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniel Mohie</title>
+  <meta name="theme-color" content="#0a0a1a">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- Ambient background -->
+  <div class="bg-glow" aria-hidden="true">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+  </div>
+
+  <main class="page-main">
+    <div class="page-container">
+      <header class="page-header">
+        <a href="index.html" class="page-back">← daniel.mohie</a>
+        <h1 class="page-title" id="page-title">projects</h1>
+      </header>
+      <div class="page-content" id="page-content">
+        <p class="page-loading">loading...</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+  // ── Default data (mirrors script.js) ──
+  const defaultData = {
+    projects: [
+      { title: "E-Commerce Platform", description: "Full-featured online store with payment processing, inventory management, and real-time order tracking.", tech: ["React", "Node.js", "PostgreSQL", "Stripe"], link: "#" },
+      { title: "Task Management Dashboard", description: "Kanban-style project management tool with drag-and-drop, team collaboration, and analytics.", tech: ["Next.js", "TypeScript", "Prisma", "Socket.io"], link: "#" },
+      { title: "Real-Time Chat App", description: "Messaging platform with rooms, file sharing, typing indicators, and message history.", tech: ["React", "Express", "WebSocket", "MongoDB"], link: "#" }
+    ],
+    skills: [
+      { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
+      { category: "Backend", items: ["Node.js", "Express", "Python", "Django"] },
+      { category: "Database", items: ["PostgreSQL", "MongoDB", "Redis", "Prisma"] },
+      { category: "DevOps", items: ["Docker", "CI/CD", "AWS", "Linux"] }
+    ],
+    about: "I'm a full-stack developer passionate about building clean, performant web applications. I focus on creating intuitive user experiences with modern technologies and clean architecture.\n\nWhen I'm not coding, I enjoy contributing to open-source projects, writing technical articles, and exploring new technologies.",
+    experience: [
+      { role: "Senior Developer", company: "Tech Co", period: "2023 - Present", description: "Leading frontend architecture, mentoring junior developers, and driving technical decisions across the engineering team." },
+      { role: "Full-Stack Developer", company: "Digital Agency", period: "2021 - 2023", description: "Built and maintained client-facing web applications using React, Node.js, and cloud infrastructure." },
+      { role: "Junior Developer", company: "Startup Inc", period: "2019 - 2021", description: "Developed and shipped features for a SaaS platform, working across the full stack." }
+    ],
+    blog: [
+      { title: "Building with Next.js", excerpt: "A deep dive into the App Router, server components, and the modern React ecosystem.", date: "2026-03-15" },
+      { title: "TypeScript Best Practices", excerpt: "Patterns and tips for writing cleaner, more maintainable TypeScript code.", date: "2026-02-20" },
+      { title: "CSS Grid Layout Guide", excerpt: "Mastering modern CSS layouts with grid, subgrid, and container queries.", date: "2026-01-10" }
+    ],
+    wiki: [
+      { title: "System Design", content: "Notes on distributed systems, scalability patterns, and architecture decisions for building robust applications." },
+      { title: "DevOps Cheatsheet", content: "Common commands and configurations for Docker, CI/CD pipelines, cloud deployment, and infrastructure as code." },
+      { title: "Algorithm Patterns", content: "Common algorithmic patterns: sliding window, two pointers, dynamic programming, and graph traversal techniques." }
+    ],
+    uses: [
+      { category: "Hardware", items: ["MacBook Pro M3", "LG UltraFine Monitor", "Mechanical Keyboard", "Logitech MX Master"] },
+      { category: "Software", items: ["VS Code", "iTerm2", "Figma", "Arc Browser"] },
+      { category: "Desk", items: ["Standing Desk", "Herman Miller Chair", "Desk Lamp", "Notebook"] }
+    ],
+    resume: {
+      summary: "Full-stack developer with 6+ years of experience building web applications. Passionate about clean code, user experience, and continuous learning.",
+      education: ["B.Sc. Computer Science", "Full-Stack Web Development Bootcamp"],
+      certifications: ["AWS Certified Developer", "Meta Front-End Developer"]
+    },
+    contact: {
+      email: "hello@danielmohie.dev",
+      github: "https://github.com/",
+      linkedin: "https://linkedin.com/"
+    }
+  };
+
+  // ── Section info ──
+  const sectionInfo = {
+    projects: { icon: "📁", label: "projects" },
+    skills:   { icon: "⚡", label: "skills" },
+    about:    { icon: "👤", label: "about" },
+    experience: { icon: "💼", label: "experience" },
+    blog:     { icon: "📖", label: "blog" },
+    wiki:     { icon: "📝", label: "wiki" },
+    uses:     { icon: "🖱️", label: "uses" },
+    resume:   { icon: "📄", label: "resume" },
+    contact:  { icon: "✉️", label: "contact" }
+  };
+
+  // ── Load data (localStorage > defaults) ──
+  function loadData() {
+    const saved = localStorage.getItem('portfolioData');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        // Merge: use saved values, fall back to defaults for missing keys
+        const merged = {};
+        for (const key in defaultData) {
+          merged[key] = parsed[key] !== undefined ? parsed[key] : defaultData[key];
+        }
+        return merged;
+      } catch (_) {}
+    }
+    return JSON.parse(JSON.stringify(defaultData));
+  }
+
+  // ── Renderers ──
+  function renderProjects(items) {
+    if (!items || !items.length) return '<p class="section-empty">no projects yet.</p>';
+    return items.map(p => `
+      <a href="${p.link}" class="project-card" target="_blank" rel="noopener">
+        <h3 class="project-title">${esc(p.title)}</h3>
+        <p class="project-desc">${esc(p.description)}</p>
+        <div class="project-tech">${(p.tech || []).map(t => `<span class="tech-tag">${esc(t)}</span>`).join('')}</div>
+      </a>
+    `).join('');
+  }
+
+  function renderSkills(items) {
+    if (!items || !items.length) return '<p class="section-empty">no skills listed yet.</p>';
+    return items.map(s => `
+      <div class="skill-group">
+        <h3 class="skill-category">${esc(s.category)}</h3>
+        <div class="skill-items">${(s.items || []).map(i => `<span class="skill-chip">${esc(i)}</span>`).join('')}</div>
+      </div>
+    `).join('');
+  }
+
+  function renderAbout(text) {
+    if (!text) return '<p class="section-empty">nothing here yet.</p>';
+    return text.split('\n').map(p => `<p class="about-text">${esc(p)}</p>`).join('');
+  }
+
+  function renderExperience(items) {
+    if (!items || !items.length) return '<p class="section-empty">no experience listed yet.</p>';
+    return '<div class="timeline">' + items.map(e => `
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-period">${esc(e.period)}</span>
+          <h3 class="timeline-role">${esc(e.role)}</h3>
+          <p class="timeline-company">${esc(e.company)}</p>
+          <p class="timeline-desc">${esc(e.description)}</p>
+        </div>
+      </div>
+    `).join('') + '</div>';
+  }
+
+  function renderBlog(items) {
+    if (!items || !items.length) return '<p class="section-empty">no posts yet.</p>';
+    return items.map(b => `
+      <article class="blog-card">
+        <span class="blog-date">${esc(b.date)}</span>
+        <h3 class="blog-title">${esc(b.title)}</h3>
+        <p class="blog-excerpt">${esc(b.excerpt)}</p>
+      </article>
+    `).join('');
+  }
+
+  function renderWiki(items) {
+    if (!items || !items.length) return '<p class="section-empty">no wiki entries yet.</p>';
+    return items.map(w => `
+      <details class="wiki-entry">
+        <summary class="wiki-title">${esc(w.title)}</summary>
+        <p class="wiki-content">${esc(w.content)}</p>
+      </details>
+    `).join('');
+  }
+
+  function renderUses(items) {
+    if (!items || !items.length) return '<p class="section-empty">nothing listed yet.</p>';
+    return items.map(u => `
+      <div class="uses-group">
+        <h3 class="uses-category">${esc(u.category)}</h3>
+        <ul class="uses-list">${(u.items || []).map(i => `<li>${esc(i)}</li>`).join('')}</ul>
+      </div>
+    `).join('');
+  }
+
+  function renderResume(data) {
+    if (!data) return '<p class="section-empty">no resume data yet.</p>';
+    return `
+      <p class="resume-summary">${esc(data.summary || '')}</p>
+      <div class="resume-grid">
+        <div class="resume-col">
+          <h3 class="resume-heading">education</h3>
+          <ul class="resume-list">${(data.education || []).map(e => `<li>${esc(e)}</li>`).join('')}</ul>
+        </div>
+        <div class="resume-col">
+          <h3 class="resume-heading">certifications</h3>
+          <ul class="resume-list">${(data.certifications || []).map(c => `<li>${esc(c)}</li>`).join('')}</ul>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderContact(data) {
+    if (!data) return '<p class="section-empty">no contact info yet.</p>';
+    return `
+      <div class="contact-links">
+        <a href="mailto:${esc(data.email)}" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+          <span>${esc(data.email)}</span>
+        </a>
+        <a href="${esc(data.github)}" target="_blank" rel="noopener" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.57 9.57 0 0 1 12 6.8c.85.004 1.71.115 2.51.338 1.9-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+          <span>github</span>
+        </a>
+        <a href="${esc(data.linkedin)}" target="_blank" rel="noopener" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span>linkedin</span>
+        </a>
+      </div>
+    `;
+  }
+
+  const renderers = {
+    projects: renderProjects,
+    skills: renderSkills,
+    about: renderAbout,
+    experience: renderExperience,
+    blog: renderBlog,
+    wiki: renderWiki,
+    uses: renderUses,
+    resume: renderResume,
+    contact: renderContact
+  };
+
+  function esc(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  // ── Init page ──
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get('s') || 'projects';
+
+    const info = sectionInfo[section];
+    if (!info) {
+      document.getElementById('page-title').textContent = 'not found';
+      document.getElementById('page-content').innerHTML = '<p class="section-empty">section not found. <a href="index.html" style="color:var(--accent)">go home</a></p>';
+      return;
+    }
+
+    document.getElementById('page-title').textContent = info.icon + ' ' + info.label;
+    document.title = 'Daniel Mohie — ' + info.label;
+
+    const data = loadData();
+    const renderer = renderers[section];
+    const content = renderer ? renderer(data[section]) : '<p class="section-empty">nothing here yet.</p>';
+    document.getElementById('page-content').innerHTML = content;
+  });
+  </script>
+</body>
+</html>

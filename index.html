@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniel Mohie — Developer</title>
+  <meta name="description" content="Full-Stack Developer crafting pixel-perfect, performant digital experiences with modern web technologies.">
+  <meta name="author" content="Daniel Mohie">
+  <meta name="theme-color" content="#0a0a1a">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Daniel Mohie — Developer">
+  <meta property="og:description" content="Full-Stack Developer crafting pixel-perfect, performant digital experiences with modern web technologies.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- Ambient background -->
+  <div class="bg-glow" aria-hidden="true">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+  </div>
+
+  <main class="dashboard" id="dashboard">
+    <div class="dashboard-inner">
+
+      <!-- Header: Avatar + Name + Status -->
+      <header class="dash-header" id="dash-header">
+        <div class="avatar-ring">
+          <div class="avatar-glow"></div>
+          <div class="avatar" id="avatar">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+        </div>
+        <div class="header-info">
+          <h1 class="header-name" id="header-name">daniel mohie</h1>
+          <div class="header-status">
+            <span class="status-dot"></span>
+            <p class="header-bio" id="header-bio"></p>
+          </div>
+        </div>
+      </header>
+
+      <!-- Navigation Grid -->
+      <nav class="nav-grid" id="nav-grid">
+
+        <!-- Projects — full width -->
+        <a href="page.html?s=projects" class="nav-card nav-card-wide" id="nav-projects">
+          <div class="nav-card-top">
+            <div class="nav-card-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 10.5 8 13l2 2.5"></path>
+                <path d="m14 10.5 2 2.5-2 2.5"></path>
+                <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"></path>
+              </svg>
+              <span>daniel.projects</span>
+            </div>
+            <svg class="nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10"></path><path d="M7 17 17 7"></path>
+            </svg>
+          </div>
+          <p class="nav-card-desc">full-stack applications — dashboards, e-commerce, real-time apps, and more.</p>
+          <span class="nav-card-hint">[execute]</span>
+        </a>
+
+        <!-- Skills -->
+        <a href="page.html?s=skills" class="nav-card" id="nav-skills">
+          <div class="nav-card-top">
+            <div class="nav-card-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              <span>daniel.skills</span>
+            </div>
+            <svg class="nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10"></path><path d="M7 17 17 7"></path>
+            </svg>
+          </div>
+          <p class="nav-card-desc">frontend, backend, design tools, and devops stack.</p>
+          <span class="nav-card-hint">[inspect]</span>
+        </a>
+
+        <!-- About -->
+        <a href="page.html?s=about" class="nav-card" id="nav-about">
+          <div class="nav-card-top">
+            <div class="nav-card-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>daniel.about</span>
+            </div>
+            <svg class="nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10"></path><path d="M7 17 17 7"></path>
+            </svg>
+          </div>
+          <p class="nav-card-desc">journey, background, and development philosophy.</p>
+          <span class="nav-card-hint">[query]</span>
+        </a>
+
+        <!-- Experience -->
+        <a href="page.html?s=experience" class="nav-card" id="nav-experience">
+          <div class="nav-card-top">
+            <div class="nav-card-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path>
+              </svg>
+              <span>daniel.experience</span>
+            </div>
+            <svg class="nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10"></path><path d="M7 17 17 7"></path>
+            </svg>
+          </div>
+          <p class="nav-card-desc">work history, credentials, and accomplishments.</p>
+          <span class="nav-card-hint">[retrieve]</span>
+        </a>
+
+        <!-- Blog -->
+        <a href="page.html?s=blog" class="nav-card" id="nav-blog">
+          <div class="nav-card-top">
+            <div class="nav-card-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 7v14"></path>
+                <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>
+              </svg>
+              <span>daniel.blog</span>
+            </div>
+            <svg class="nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10"></path><path d="M7 17 17 7"></path>
+            </svg>
+          </div>
+          <p class="nav-card-desc">technical writing, tutorials, and dev notes.</p>
+          <span class="nav-card-hint">[read]</span>
+        </a>
+
+        <!-- Wiki -->
+        <a href="page.html?s=wiki" class="nav-card" id="nav-wiki">
+          <div class="nav-card-top">
+            <div class="nav-card-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              <span>daniel.wiki</span>
+            </div>
+            <svg class="nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10"></path><path d="M7 17 17 7"></path>
+            </svg>
+          </div>
+          <p class="nav-card-desc">personal knowledge base, notes, and reference docs.</p>
+          <span class="nav-card-hint">[explore]</span>
+        </a>
+
+        <!-- Uses -->
+        <a href="page.html?s=uses" class="nav-card" id="nav-uses">
+          <div class="nav-card-top">
+            <div class="nav-card-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                <rect x="9" y="9" width="6" height="6"></rect>
+                <line x1="9" y1="1" x2="9" y2="4"></line>
+                <line x1="15" y1="1" x2="15" y2="4"></line>
+                <line x1="9" y1="20" x2="9" y2="23"></line>
+                <line x1="15" y1="20" x2="15" y2="23"></line>
+                <line x1="20" y1="9" x2="23" y2="9"></line>
+                <line x1="20" y1="14" x2="23" y2="14"></line>
+                <line x1="1" y1="9" x2="4" y2="9"></line>
+                <line x1="1" y1="14" x2="4" y2="14"></line>
+              </svg>
+              <span>daniel.uses</span>
+            </div>
+            <svg class="nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10"></path><path d="M7 17 17 7"></path>
+            </svg>
+          </div>
+          <p class="nav-card-desc">dev setup, hardware, software, and configurations.</p>
+          <span class="nav-card-hint">[list]</span>
+        </a>
+
+        <!-- Resume -->
+        <a href="page.html?s=resume" class="nav-card" id="nav-resume">
+          <div class="nav-card-top">
+            <div class="nav-card-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              <span>daniel.resume</span>
+            </div>
+            <svg class="nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10"></path><path d="M7 17 17 7"></path>
+            </svg>
+          </div>
+          <p class="nav-card-desc">qualifications, experience, and professional history.</p>
+          <span class="nav-card-hint">[view]</span>
+        </a>
+
+        <!-- Contact -->
+        <a href="page.html?s=contact" class="nav-card" id="nav-contact">
+          <div class="nav-card-top">
+            <div class="nav-card-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              </svg>
+              <span>daniel.contact</span>
+            </div>
+            <svg class="nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10"></path><path d="M7 17 17 7"></path>
+            </svg>
+          </div>
+          <p class="nav-card-desc">send a message or get in touch directly.</p>
+          <span class="nav-card-hint">[connect]</span>
+        </a>
+
+      </nav>
+
+      <!-- Footer -->
+      <footer class="dash-footer" id="dash-footer">
+        <div class="footer-socials">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" id="social-gh">gh</a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" id="social-li">linkedin</a>
+          <a href="mailto:hello@danielmohie.dev" id="social-email">email</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 daniel mohie &middot; built with html, css, javascript</p>
+        <a href="admin.html" class="footer-admin-link">[admin]</a>
+        <p class="footer-kbd">
+          press
+          <kbd>ctrl</kbd> + <kbd>k</kbd>
+          to search
+        </p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- Command Palette (Ctrl+K) -->
+  <div class="cmd-overlay" id="cmd-overlay">
+    <div class="cmd-palette" id="cmd-palette">
+      <div class="cmd-search-wrap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" class="cmd-input" id="cmd-input" placeholder="type a command..." autocomplete="off" spellcheck="false">
+        <kbd class="cmd-esc">esc</kbd>
+      </div>
+      <ul class="cmd-results" id="cmd-results">
+        <li data-href="page.html?s=projects"><span class="cmd-icon">&#x1F4C1;</span> projects</li>
+        <li data-href="page.html?s=skills"><span class="cmd-icon">&#x26A1;</span> skills</li>
+        <li data-href="page.html?s=about"><span class="cmd-icon">&#x1F464;</span> about</li>
+        <li data-href="page.html?s=experience"><span class="cmd-icon">&#x1F4BC;</span> experience</li>
+        <li data-href="page.html?s=blog"><span class="cmd-icon">&#x1F4D6;</span> blog</li>
+        <li data-href="page.html?s=wiki"><span class="cmd-icon">&#x1F4DD;</span> wiki</li>
+        <li data-href="page.html?s=uses"><span class="cmd-icon">&#x1F5B1;</span> uses</li>
+        <li data-href="page.html?s=resume"><span class="cmd-icon">&#x1F4C4;</span> resume</li>
+        <li data-href="page.html?s=contact"><span class="cmd-icon">&#x2709;</span> contact</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

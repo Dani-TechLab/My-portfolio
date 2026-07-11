@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Daniel Mohie</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="admin-wrap">
+    <header class="admin-header">
+      <h1 class="admin-logo">daniel<span class="admin-logo-accent">.admin</span></h1>
+      <div class="admin-header-right">
+        <a href="index.html" class="admin-link">← view site</a>
+        <span class="admin-status" id="admin-status">ready</span>
+      </div>
+    </header>
+
+    <div class="admin-body">
+      <nav class="admin-tabs" id="admin-tabs"></nav>
+      <main class="admin-content" id="admin-content"></main>
+    </div>
+
+    <footer class="admin-footer">
+      <div class="admin-footer-left">
+        <button class="admin-btn admin-btn-save" id="btn-save">save changes</button>
+        <span class="admin-saved-msg" id="saved-msg"></span>
+      </div>
+      <button class="admin-btn admin-btn-reset" id="btn-reset">reset defaults</button>
+    </footer>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html>
